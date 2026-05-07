@@ -1,4 +1,3 @@
 openai
-pyyaml
-pytest
 requests
+pytest
