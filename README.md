@@ -1,13 +1,21 @@
-# GitGuardian Remediation Agent
+# GitGuardian AI Remediation Agent
 
-Sample open-source friendly project demonstrating:
-- GitHub Actions integration with GitGuardian
-- AI remediation workflow scaffolding
-- Spec-driven development structure
-- Security scanning pipeline
+AI-powered DevSecOps system that:
+- Detects secrets using GitGuardian scanning
+- Uses an AI agent to suggest secure fixes
+- Applies automated remediation via GitHub Actions
+
+## Architecture
+GitHub Actions → Scan → AI Agent → Auto Fix → Commit
 
 ## Features
-- Secret scanning using GitGuardian
-- Sample remediation agent architecture
-- GitHub Actions CI workflow
-- Python remediation service scaffold
+- AI-driven code remediation
+- CI/CD security automation
+- Secret detection pipeline
+- Extensible agent-based architecture
+
+## Tech Stack
+Python, GitHub Actions, OpenAI API, DevSecOps
+
+## Purpose
+Portfolio project demonstrating AI agent engineering + DevSecOps automation.
