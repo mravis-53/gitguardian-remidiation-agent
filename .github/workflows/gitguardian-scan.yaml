@@ -1,0 +1,41 @@
+name: Security Scan + AI Remediation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run GitGuardian Scan
+        env:
+          GG_API_KEY: ${{ secrets.GG_API_KEY }}
+        run: |
+          python scanner/gitguardian_client.py > scan_results.json
+
+      - name: Run AI Remediation Agent
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python agent/remediation_engine.py scan_results.json
+
+      - name: Commit Auto Fixes (if any)
+        run: |
+          git config user.name "ai-remediation-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add .
+          git diff --cached --quiet || git commit -m "AI auto-remediation fixes"
+          git push
