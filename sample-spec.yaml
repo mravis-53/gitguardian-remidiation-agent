@@ -1,0 +1,15 @@
+id: ENG-101
+title: GitGuardian Secret Scanning Integration
+
+goals:
+  - Detect secrets in pull requests
+  - Fail CI on secret detection
+
+requirements:
+  functional:
+    - Run GitGuardian scan on PR
+    - Produce remediation suggestions
+
+acceptance_criteria:
+  - Pipeline fails when secret detected
+  - Remediation recommendation generated
